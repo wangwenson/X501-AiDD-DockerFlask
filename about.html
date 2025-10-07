@@ -16,7 +16,7 @@
       </a>
       <nav class="main-nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
+        <a href="about.html" class="active">About</a>
         <a href="resume.html">Resume</a>
         <a href="projects.html">Projects</a>
         <a href="contact.html">Contact</a>
@@ -25,17 +25,31 @@
   </header>
 
   <main class="container mt-4">
-    <article class="bio bg-white p-4 rounded-3 shadow-sm d-md-flex gap-4">
-      <img src="images/profile-placeholder.svg" alt="Profile photo" class="profile-photo me-3">
-      <div>
-        <h2 class="h3">Hi, I'm Wenson</h2>
-        <p>I am a student studying data-driven design and development. My background includes coursework in data science, programming, and human-centered design. I enjoy building small web apps, analyzing datasets, and creating clear visualizations.</p>
-
-        <h3 class="h5 mt-3">Interests</h3>
-        <p>Machine learning, interactive visualization, user experience, and reproducible research.</p>
-
-        <h3 class="h5 mt-3">Goals</h3>
-        <p>Short-term: complete the AiDD assignments and grow my portfolio. Long-term: work on applied ML products that help people make better decisions.</p>
+    <article class="bio">
+      <img src="images/profile.jpg" alt="Profile photo" class="profile-photo profile-lg d-block mx-auto mb-3">
+      <div class="cards-horizontal">
+        <div class="card">
+          <div class="card-body">
+              <h3 class="h5 mb-2">Background</h3>
+              <p class="mb-0">I’m a graduate student in the Kelley School of Business at Indiana University, where I’m completing the MS in Information Systems (Dec 2026) after earning my BS in Business with majors in Information Systems and Business Analytics and a minor in Mathematics (May 2025, GPA 3.74). During my time at Kelley I’ve served as a Graduate Assistant, supporting research initiatives and managing internal datasets used for economic and demographic reporting. I enjoy collaborating across teams and translating analysis into clear, timely insights for decision-makers.</p>
+              <p class="mb-0 mt-2">Professionally, I’ve contributed as a Consulting Intern with the Kelley HOPE Digital Project. There, I helped develop a secure AI demo that integrated LLMs with a real-time avatar interface, built a Retrieval-Augmented Generation (RAG) pipeline with governance controls, and engineered a Neo4j-backed document parser to extract insights from unstructured content—reducing manual effort and improving support workflows. Those projects sharpened both my technical toolkit (Python, SQL, Pandas/NumPy; Snowflake, MongoDB, PostgreSQL; Tableau/Power BI/Excel/Stata) and my focus on responsible AI design.</p>
+              <p class="mb-0 mt-2">I’ve also worked in high-volume, customer-facing roles—at Maru Sushi and Walmart—where I learned to stay calm under pressure, listen closely, and adapt quickly. That service mindset carries into my technical and consulting work: start with the user, clarify the problem, and deliver solutions that actually get used.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+              <h3 class="h5 mb-2">Interests</h3>
+              <p class="mb-0">I’m especially interested in applied machine learning for text and document intelligence. A recent project—Applying BERT for Real-Time Media Sentiment Analysis—combined data engineering and modeling to collect 5,000+ articles, cleanse and structure them in SQL, and classify sentiment using transformer models with >85% accuracy. I like problems where ML must be production-minded: reliable pipelines, governance and access control, and measurable business impact.</p>
+              <p class="mb-0 mt-2">I’m curious about RAG evaluation strategies, model observability, prompt/system design, and how knowledge graphs (e.g., Neo4j) can make unstructured data more queryable and auditable. Outside of work, I recharge with chess, aquascaping, and rock climbing—all hobbies that mirror what I value in ML: strategy, systems thinking, and disciplined iteration.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+              <h3 class="h5 mb-2">Goals</h3>
+              <p class="mb-0">My near-term goal is to join a consulting team focused on AI/analytics, where I can bridge business needs and technical execution. I want to help clients identify high-leverage use cases, design secure and governed data/ML architectures, and deliver prototypes that mature into dependable products.</p>
+              <p class="mb-0 mt-2">Longer term, I aim to be a trusted advisor on responsible AI adoption—helping organizations balance innovation with risk management, quantify ROI from ML initiatives, and build internal capabilities so solutions are sustainable beyond the initial engagement.</p>
+          </div>
+        </div>
       </div>
     </article>
   </main>

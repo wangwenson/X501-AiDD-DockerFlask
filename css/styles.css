@@ -1,15 +1,18 @@
 :root{
   /* Palette provided by user */
-  --black: #000000;       /* primary text */
-  --muted-olive: #9b9b86; /* slightly darker for legibility */
-  --paper: #ffffff;       /* page background (use white for contrast)
-                           cards will use the original paper tone */
+  --black: #0b0b0b;       /* primary text */
+  --muted-olive: #8b8b78; /* slightly darker for legibility */
+  --paper: #ffffff;       /* page background */
   --card: #d6d5c9;        /* card background tone */
   --accent: #a22c29;      /* primary accent (buttons, links) */
   --accent-dark: #902923; /* hover / stronger accent */
   --white: #ffffff;
-  --maxw: 980px;
-  --radius: 8px;
+  --maxw: 1080px;
+  --radius: 12px;
+  --shadow-sm: 0 2px 6px rgba(0,0,0,0.06);
+  --shadow-md: 0 10px 24px rgba(0,0,0,0.10);
+  --shadow-lg: 0 24px 48px rgba(0,0,0,0.12);
+  --ring: 0 0 0 3px rgba(162,44,41,0.15);
 }
 
 *{box-sizing:border-box}
@@ -21,50 +24,70 @@ body{
   margin:0;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  min-height:100vh;
+  flex-direction:column;
 }
 
 .container{max-width:var(--maxw);margin:0 auto;padding:1.25rem}
 
+/* Ensure footer sits at bottom on short pages */
+main{flex:1 0 auto}
+
 /* Header / Navigation */
-.site-header{background:var(--white);border-bottom:1px solid rgba(0,0,0,0.06);box-shadow:0 1px 0 rgba(0,0,0,0.02)}
+.site-header{position:sticky;top:0;background:var(--white);border-top:3px solid var(--accent);border-bottom:1px solid rgba(0,0,0,0.08);box-shadow:0 2px 12px rgba(0,0,0,0.06);z-index:50}
 .site-header .container{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.site-title{margin:0;padding:.9rem 0;font-size:1.1rem;font-weight:700;letter-spacing:0.2px}
+.site-title{margin:0;padding:.9rem 0;font-size:1.15rem;font-weight:800;letter-spacing:0.3px}
 .main-nav{display:flex;gap:0.5rem;align-items:center}
-.main-nav a{margin-left:0.5rem;color:var(--accent-dark);text-decoration:none;padding:.55rem .6rem;border-radius:6px;font-weight:600;font-size:.95rem}
-.main-nav a:hover{background:linear-gradient(180deg, rgba(162,44,41,0.06), rgba(144,41,35,0.03));color:var(--accent)}
+.main-nav a{position:relative;margin-left:0.25rem;color:var(--accent-dark);text-decoration:none;padding:.6rem .8rem;border-radius:10px;font-weight:800;font-size:.95rem;line-height:1;transition:transform .2s ease, background .2s ease, color .2s ease}
+.main-nav a::after{content:"";position:absolute;left:.8rem;right:.8rem;bottom:.35rem;height:2px;background:transparent;border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform .2s ease, background .2s ease}
+.main-nav a:hover{background:linear-gradient(180deg, rgba(162,44,41,0.07), rgba(144,41,35,0.04));color:var(--accent);transform:translateY(-1px)}
+.main-nav a:hover::after{background:var(--accent);transform:scaleX(1)}
+.main-nav a:focus-visible{outline:none;box-shadow:var(--ring)}
+.main-nav a.active{background:linear-gradient(180deg, rgba(162,44,41,0.12), rgba(144,41,35,0.06));color:var(--accent);box-shadow:var(--shadow-sm)}
+.main-nav a.active::after{background:var(--accent);transform:scaleX(1)}
 
 /* Hero / Intro */
 .intro{padding:1rem 0}
-.intro h2{margin:0 0 .5rem;font-size:1.6rem}
-.intro p{color:var(--muted-olive);line-height:1.6}
+.intro h2{margin:0 0 .5rem;font-size:2rem;letter-spacing:.2px}
+.intro p{color:var(--muted-olive);line-height:1.7;font-size:1.05rem}
+.intro-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.75rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:var(--white);border:none;padding:.65rem 1rem;border-radius:10px;cursor:pointer;font-weight:800;letter-spacing:.2px;box-shadow:var(--shadow-sm);text-decoration:none;transition:transform .2s ease, box-shadow .2s ease, background .2s ease}
+.btn:hover{background:var(--accent-dark);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.btn.ghost{background:transparent;color:var(--accent);box-shadow:none;border:1.5px solid rgba(162,44,41,0.35)}
+.btn.ghost:hover{background:rgba(162,44,41,0.08);color:var(--accent-dark)}
 
 /* Profile image */
 .profile-photo{width:160px;height:160px;border-radius:var(--radius);display:block;margin-bottom:1rem;object-fit:cover;border:4px solid rgba(162,44,41,0.08)}
+.profile-photo.profile-lg{width:200px;height:200px}
 
 /* Cards and media */
-.screenshot{max-width:100%;height:auto;border-radius:6px;border:1px solid rgba(0,0,0,0.06);background:var(--white);padding:0.5rem}
+.screenshot{max-width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:var(--white);padding:0.5rem}
 .project{margin-bottom:1.5rem}
 .project .screenshot{display:block;margin:0 0 .75rem}
 
 .project-list{display:block}
 
 /* Card-like project entries for a polished look */
-.project{background:var(--card);padding:1rem;border-radius:var(--radius);box-shadow:0 10px 24px rgba(0,0,0,0.06);color:var(--black)}
+.project{background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.7)), var(--card);padding:1rem;border-radius:var(--radius);box-shadow:var(--shadow-md);color:var(--black);transition:transform .25s ease, box-shadow .25s ease}
+.project:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
 .project + .project{margin-top:1rem}
+.project h2{margin-top:0}
+.project p:last-child{margin-top:auto}
 
 /* Footer */
-.site-footer{padding:1.25rem 0;text-align:center;color:var(--muted-olive);font-size:.95rem}
+.site-footer{padding:1.5rem 0;text-align:center;color:var(--black);font-size:.95rem;border-top:3px solid var(--accent);background:linear-gradient(180deg, rgba(214,213,201,0.7), rgba(214,213,201,0.9)), var(--card);box-shadow:0 -2px 12px rgba(0,0,0,0.06)}
 
 /* Forms */
-.contact-form label{display:block;margin:0.5rem 0;color:var(--black);font-weight:600}
-input[type=text],input[type=email],textarea{width:100%;padding:.6rem;border:1px solid rgba(0,0,0,0.08);border-radius:6px;background:var(--white);color:var(--black)}
-input:focus,textarea:focus{outline:none;box-shadow:0 0 0 3px rgba(162,44,41,0.06);border-color:var(--accent)}
-button{background:var(--accent);color:var(--white);border:none;padding:.6rem 1rem;border-radius:6px;cursor:pointer;font-weight:700}
-button:hover{background:var(--accent-dark)}
+.contact-form label{display:block;margin:0.5rem 0;color:var(--black);font-weight:700}
+input[type=text],input[type=email],textarea{width:100%;padding:.75rem .85rem;border:1px solid rgba(0,0,0,0.08);border-radius:10px;background:var(--white);color:var(--black);transition:box-shadow .2s ease,border-color .2s ease}
+input:focus,textarea:focus{outline:none;box-shadow:var(--ring);border-color:var(--accent)}
+button{background:var(--accent);color:var(--white);border:none;padding:.7rem 1.1rem;border-radius:10px;cursor:pointer;font-weight:800;letter-spacing:.2px;box-shadow:var(--shadow-sm);transition:transform .2s ease, box-shadow .2s ease, background .2s ease}
+button:hover{background:var(--accent-dark);transform:translateY(-1px);box-shadow:var(--shadow-md)}
 
 /* Ensure links have good contrast */
-a{color:var(--accent);text-decoration:underline}
-a:hover{color:var(--accent-dark)}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--accent-dark);text-decoration:underline}
 
 /* Layout tweaks for larger screens */
 @media(min-width:700px){
@@ -77,22 +100,43 @@ a:hover{color:var(--accent-dark)}
   .intro{display:block;gap:0;align-items:initial}
   .intro .bio-text{flex:initial}
   /* projects grid */
-  .project-list{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
-  .project{margin:0}
+  .project-list{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;align-items:stretch}
+  .project{margin:0;display:flex;flex-direction:column}
 }
 
 /* Homepage specific spacing: separate header from hero on home */
 body.home .site-header{border-bottom-width:0}
 body.home main{margin-top:1.25rem}
+body.home{font-family: "Inter", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif}
+/* Ensure strong contrast for homepage text */
+body.home .intro p{color:var(--black)}
+body.home .lead{color:var(--black)}
 
 /* Heading system for a cleaner, modern look */
 h1.site-title{font-size:1.125rem;letter-spacing:0.2px}
-h2.display-6{font-weight:600;color:var(--black);margin-bottom:.5rem}
+h2.display-6{font-weight:800;color:var(--black);margin-bottom:.5rem}
 h2.h4, h2{font-weight:700;margin-top:0;margin-bottom:.5rem}
 h3{font-weight:600;margin-top:1rem;margin-bottom:.5rem;color:var(--black)}
 
 /* Utility alignment */
 .lead{color:var(--muted-olive)}
 .bg-white{background:var(--white)}
+
+/* About page cards - single column, full width */
+.cards-horizontal{display:block}
+.cards-horizontal .card{width:100%;display:block}
+.cards-horizontal .card + .card{margin-top:1rem}
+
+/* Lists - modern bullets */
+.highlights ul, .resume ul{padding-left:1.25rem}
+.highlights li, .resume li{margin:.35rem 0}
+.highlights li::marker, .resume li::marker{color:var(--accent)}
+
+/* Bootstrap card override for consistency (if present) */
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.7)), var(--card);border:none;border-radius:var(--radius);box-shadow:var(--shadow-md)}
+.card .card-body{padding:1rem}
+.card .card-title{margin:0 0 .25rem}
+
+/* Dark mode intentionally disabled for consistent light theme */
 
 
