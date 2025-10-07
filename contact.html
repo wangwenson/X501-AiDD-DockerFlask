@@ -30,27 +30,96 @@
       <p class="mb-1">Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
       <p class="mb-3">LinkedIn: <a href="#">linkedin.com/in/yourname</a> • GitHub: <a href="#">github.com/yourname</a></p>
 
-      <h3 class="h5 mt-2">Send a message</h3>
-      <form action="#" method="post" class="contact-form row g-3" aria-label="Contact form">
+      <h3 class="h5 mt-2">Contact Form</h3>
+      <form id="contactForm" action="thankyou.html" method="get" class="contact-form row g-3" aria-label="Contact form" novalidate>
         <div class="col-md-6">
-          <label class="form-label">Name
-            <input type="text" name="name" class="form-control" required>
-          </label>
+          <label for="firstName" class="form-label">First Name *</label>
+          <input type="text" id="firstName" name="firstName" class="form-control" required>
+          <div class="invalid-feedback">First name is required.</div>
         </div>
         <div class="col-md-6">
-          <label class="form-label">Email
-            <input type="email" name="email" class="form-control" required>
-          </label>
+          <label for="lastName" class="form-label">Last Name *</label>
+          <input type="text" id="lastName" name="lastName" class="form-control" required>
+          <div class="invalid-feedback">Last name is required.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email Address *</label>
+          <input type="email" id="email" name="email" class="form-control" required pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$">
+          <div class="invalid-feedback">Please enter a valid email address.</div>
+        </div>
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+          <label for="password" class="form-label">Password *</label>
+          <input type="password" id="password" name="password" class="form-control" required minlength="8">
+          <div class="invalid-feedback">Password must be at least 8 characters.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="confirmPassword" class="form-label">Confirm Password *</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required minlength="8">
+          <div class="invalid-feedback">Passwords must match.</div>
         </div>
         <div class="col-12">
-          <label class="form-label">Message
-            <textarea name="message" rows="6" class="form-control" required></textarea>
-          </label>
+          <label for="message" class="form-label">Message *</label>
+          <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
+          <div class="invalid-feedback">Message is required.</div>
         </div>
         <div class="col-12">
-          <button type="submit" class="btn">Send</button>
+          <button type="submit" class="btn">Submit</button>
         </div>
       </form>
+      <script>
+      // Minimal JS for custom validation and redirect
+      document.getElementById('contactForm').addEventListener('submit', function(e) {
+        var form = e.target;
+        var valid = true;
+        // First Name
+        if (!form.firstName.value.trim()) {
+          form.firstName.classList.add('is-invalid');
+          valid = false;
+        } else {
+          form.firstName.classList.remove('is-invalid');
+        }
+        // Last Name
+        if (!form.lastName.value.trim()) {
+          form.lastName.classList.add('is-invalid');
+          valid = false;
+        } else {
+          form.lastName.classList.remove('is-invalid');
+        }
+        // Email
+        var emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+        if (!form.email.value.trim() || !emailPattern.test(form.email.value)) {
+          form.email.classList.add('is-invalid');
+          valid = false;
+        } else {
+          form.email.classList.remove('is-invalid');
+        }
+        // Password
+        if (!form.password.value || form.password.value.length < 8) {
+          form.password.classList.add('is-invalid');
+          valid = false;
+        } else {
+          form.password.classList.remove('is-invalid');
+        }
+        // Confirm Password
+        if (!form.confirmPassword.value || form.confirmPassword.value !== form.password.value) {
+          form.confirmPassword.classList.add('is-invalid');
+          valid = false;
+        } else {
+          form.confirmPassword.classList.remove('is-invalid');
+        }
+        // Message
+        if (!form.message.value.trim()) {
+          form.message.classList.add('is-invalid');
+          valid = false;
+        } else {
+          form.message.classList.remove('is-invalid');
+        }
+        if (!valid) {
+          e.preventDefault();
+        }
+      });
+      </script>
     </section>
   </main>
 
