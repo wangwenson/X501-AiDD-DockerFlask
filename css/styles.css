@@ -1,0 +1,98 @@
+:root{
+  /* Palette provided by user */
+  --black: #000000;       /* primary text */
+  --muted-olive: #9b9b86; /* slightly darker for legibility */
+  --paper: #ffffff;       /* page background (use white for contrast)
+                           cards will use the original paper tone */
+  --card: #d6d5c9;        /* card background tone */
+  --accent: #a22c29;      /* primary accent (buttons, links) */
+  --accent-dark: #902923; /* hover / stronger accent */
+  --white: #ffffff;
+  --maxw: 980px;
+  --radius: 8px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  background:var(--paper);
+  color:var(--black);
+  margin:0;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.container{max-width:var(--maxw);margin:0 auto;padding:1.25rem}
+
+/* Header / Navigation */
+.site-header{background:var(--white);border-bottom:1px solid rgba(0,0,0,0.06);box-shadow:0 1px 0 rgba(0,0,0,0.02)}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.site-title{margin:0;padding:.9rem 0;font-size:1.1rem;font-weight:700;letter-spacing:0.2px}
+.main-nav{display:flex;gap:0.5rem;align-items:center}
+.main-nav a{margin-left:0.5rem;color:var(--accent-dark);text-decoration:none;padding:.55rem .6rem;border-radius:6px;font-weight:600;font-size:.95rem}
+.main-nav a:hover{background:linear-gradient(180deg, rgba(162,44,41,0.06), rgba(144,41,35,0.03));color:var(--accent)}
+
+/* Hero / Intro */
+.intro{padding:1rem 0}
+.intro h2{margin:0 0 .5rem;font-size:1.6rem}
+.intro p{color:var(--muted-olive);line-height:1.6}
+
+/* Profile image */
+.profile-photo{width:160px;height:160px;border-radius:var(--radius);display:block;margin-bottom:1rem;object-fit:cover;border:4px solid rgba(162,44,41,0.08)}
+
+/* Cards and media */
+.screenshot{max-width:100%;height:auto;border-radius:6px;border:1px solid rgba(0,0,0,0.06);background:var(--white);padding:0.5rem}
+.project{margin-bottom:1.5rem}
+.project .screenshot{display:block;margin:0 0 .75rem}
+
+.project-list{display:block}
+
+/* Card-like project entries for a polished look */
+.project{background:var(--card);padding:1rem;border-radius:var(--radius);box-shadow:0 10px 24px rgba(0,0,0,0.06);color:var(--black)}
+.project + .project{margin-top:1rem}
+
+/* Footer */
+.site-footer{padding:1.25rem 0;text-align:center;color:var(--muted-olive);font-size:.95rem}
+
+/* Forms */
+.contact-form label{display:block;margin:0.5rem 0;color:var(--black);font-weight:600}
+input[type=text],input[type=email],textarea{width:100%;padding:.6rem;border:1px solid rgba(0,0,0,0.08);border-radius:6px;background:var(--white);color:var(--black)}
+input:focus,textarea:focus{outline:none;box-shadow:0 0 0 3px rgba(162,44,41,0.06);border-color:var(--accent)}
+button{background:var(--accent);color:var(--white);border:none;padding:.6rem 1rem;border-radius:6px;cursor:pointer;font-weight:700}
+button:hover{background:var(--accent-dark)}
+
+/* Ensure links have good contrast */
+a{color:var(--accent);text-decoration:underline}
+a:hover{color:var(--accent-dark)}
+
+/* Layout tweaks for larger screens */
+@media(min-width:700px){
+  .site-header .container{padding:0 1rem}
+  .contact-form{max-width:640px}
+}
+
+@media(min-width:900px){
+  /* Keep intro content stacked vertically for clarity */
+  .intro{display:block;gap:0;align-items:initial}
+  .intro .bio-text{flex:initial}
+  /* projects grid */
+  .project-list{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+  .project{margin:0}
+}
+
+/* Homepage specific spacing: separate header from hero on home */
+body.home .site-header{border-bottom-width:0}
+body.home main{margin-top:1.25rem}
+
+/* Heading system for a cleaner, modern look */
+h1.site-title{font-size:1.125rem;letter-spacing:0.2px}
+h2.display-6{font-weight:600;color:var(--black);margin-bottom:.5rem}
+h2.h4, h2{font-weight:700;margin-top:0;margin-bottom:.5rem}
+h3{font-weight:600;margin-top:1rem;margin-bottom:.5rem;color:var(--black)}
+
+/* Utility alignment */
+.lead{color:var(--muted-olive)}
+.bg-white{background:var(--white)}
+
+
