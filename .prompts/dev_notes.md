@@ -51,4 +51,14 @@ Polished forms and buttons with focus/hover states.
 
 I kept most of it, but had Copilot adjust the background colors and text colors since they were not readable.
 
-Reflection: AI messed up the formatting part by making the text blend into the background. 
+Prompt: Break the content in the about and projects pages into their own cards based on the heading/project. Make sure that the formatting is consistent across the website.
+
+I'll convert the three About cards into a horizontal scrolling row for all screen sizes by updating about.html to use a .cards-horizontal container and adding CSS to style it.
+Converted the three sections into a horizontal card row with smooth scroll on small screens and equal-width cards on desktop.
+Added .cards-horizontal styles in css/styles.css.
+Kept the enlarged, top-centered profile image.
+Want arrows for snapping between cards, or should we keep it purely swipe/scroll?
+
+I kept the color and font changes, but Copilot split the sections into columns instead of horizontal rows. This required additional prompting to resolve.
+
+Reflection: I found that overall, the speed of creating a simple website is much faster with AI than without. AI is very good at generating basic boilerplate code, such as the navbar, setting up containers in main, and having the footer. It can also quickly address moving things around when changes are needed. The main struggle AI has is actually in the overall design choice and palette. While it can adjust the website's formatting, it lacks the ability to determine whether or not it would fit the theme of the website. Even when I provided a color palette, the AI would misuse it by having the font color blend into the background, which would require more prompting to fix. There were also some issues like generating columns instead of horizontal containers. However, with iterative prompting or a more specific prompt to start, it can handle all the styles easily. My coding came in specifically for content, such as the foramtting of headers and body text. Overall, AI was quite good at building basic boilerplate and fixing formatting, but it needs clear guidelines on what to change.
