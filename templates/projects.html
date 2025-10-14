@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Projects - Wenson Wang{% endblock %}
+
+{% block header_title %}Projects{% endblock %}
+
+{% block content %}
+<section class="project-list">
+  <article class="project">
+    <img src="{{ url_for('static', filename='images/project1-placeholder.svg') }}" class="screenshot" alt="Digital Human demo screenshot">
+    <h2 class="h5">Digital Human — Secure AI Demo</h2>
+    <p>Designed and delivered a secure AI demo integrating LLMs with a real-time avatar interface. Built a governance-aware RAG pipeline and engineered a Neo4j-backed document parser to extract insights from unstructured content, reducing manual effort and improving support workflows.</p>
+    <p class="mb-0">Highlights: RAG with access controls • Neo4j parsing • Responsible AI design</p>
+  </article>
+  <article class="project">
+    <img src="{{ url_for('static', filename='images/project2-placeholder.svg') }}" class="screenshot" alt="Sentiment analysis project screenshot">
+    <h2 class="h5">Real-Time Media Sentiment Analysis</h2>
+    <p>Automated a pipeline to collect and store 5,000+ news articles in SQL, prepared datasets with Pandas to reduce noise by 30%, and applied BERT-based models achieving 85%+ classification accuracy for real-time monitoring and decision support.</p>
+    <p class="mb-0">Stack: Python • Pandas/NumPy • SQL • BERT</p>
+  </article>
+</section>
+{% endblock %}

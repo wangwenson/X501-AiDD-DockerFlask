@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Thank You - Wenson Wang{% endblock %}
+
+{% block header_title %}Thank You{% endblock %}
+
+{% block content %}
+<section class="bg-white p-4 rounded-3 shadow-sm text-center">
+  <h2 class="h4">Thank You!</h2>
+  <p>Your message has been submitted successfully.</p>
+  <a href="{{ url_for('index') }}" class="btn">Return to Home</a>
+</section>
+{% endblock %}
