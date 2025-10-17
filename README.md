@@ -1,31 +1,48 @@
 
-# Assignment 5 — Personal Portfolio Website
+# Assignment 7 — Personal Portfolio (Flask)
 
-## Overview
-This assignment is a personal portfolio website for Wenson Wang. It showcases background, resume, projects, and contact information using modern HTML, CSS, and Bootstrap for styling. The site is static and does not require a backend or Python to run.
+This repository contains a Flask-based personal portfolio site with a small SQLite database for managing projects.
 
-## How to Run
-1. **Open the project folder** (`Assignment5`) in your file explorer.
-2. **Double-click `index.html`** to open the homepage in your web browser.
-	- You can also open any of the other HTML files (`about.html`, `resume.html`, `projects.html`, `contact.html`) directly.
-3. All navigation and content is available through the links in the site header.
 
-## File Structure
-- `index.html` — Homepage
-- `about.html` — About Me
-- `resume.html` — Resume/CV
-- `projects.html` — Project highlights
-- `contact.html` — Contact form and info
-- `css/styles.css` — Custom styles for the site
-- `images/` — Profile and project images
+## File structure (important files)
+- `app.py` — Flask application and route handlers
+- `DAL.py` — Data Access Layer: initializes the DB and provides `get_projects()` and `add_project()` helpers
+- `projects.db` — SQLite database (created at runtime in the project root)
+- `pyproject.toml` — project metadata and dependencies (Flask, Pillow)
+- `templates/` — Jinja2 templates
+	- `index.html`, `about.html`, `projects.html`, `project_form.html`, `contact.html`, etc.
+- `static/`
+	- `css/styles.css` — custom styles
+	- `images/` — project images (uploaded images are saved here)
 
-## Features
-- Responsive design using Bootstrap and custom CSS
-- Easy navigation between sections
-- Contact form (static, does not send messages)
-- Modern, clean layout and color palette
+## Dependencies
+- Python 3.10+ (your environment)
+- Flask
+- Pillow (for image resizing)
 
-## Requirements
-- Any modern web browser (Chrome, Edge, Firefox, Safari)
-- No installation or server required
+Install locally (recommended inside a virtual environment):
+
+
+or install from `pyproject.toml` with your preferred tooling.
+
+## How to run
+From the project root (activate your venv first if you created one):
+python app.py
+
+Open a browser and visit:
+- http://127.0.0.1:5000/ — Home
+
+When the app starts, `DAL.init_db()` runs and will create `projects.db` with a `projects` table if needed.
+
+## Adding projects and images
+- Use the "Add Project" button (or visit `/project-form`) to submit a new project and optionally upload an image.
+- Uploaded images are saved into `static/images/`. The server will resize images to a consistent max size for display.
+- You can also add images manually by placing files in `static/images/` and submitting the project via the older form (if present) with the filename.
+
+## Notes and next steps
+- For production use, add CSRF protection, stricter upload validation, and authentication for project creation.
+- The image resizing currently fits images within a 600x400 box preserving aspect ratio; if you prefer fixed square thumbnails or center-crop behavior, I can change the resizing logic.
+
+## Contact
+This repo was created as part of Assignment 5 for the X501 AiDD course.
 
