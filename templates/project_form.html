@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Add Project - Wenson Wang{% endblock %}
+
+{% block header_title %}Add Project{% endblock %}
+
+{% block content %}
+<section class="project-form bg-white p-4 rounded-3 shadow-sm">
+  <h2 class="h4">Add a new project</h2>
+  <form action="{{ url_for('upload_project') }}" method="post" enctype="multipart/form-data" class="row g-3">
+    <div class="col-12">
+      <label for="title" class="form-label">Project Title *</label>
+      <input type="text" id="title" name="title" class="form-control" required>
+    </div>
+    <div class="col-12">
+      <label for="description" class="form-label">Description *</label>
+      <textarea id="description" name="description" rows="4" class="form-control" required></textarea>
+    </div>
+    <div class="col-12">
+      <label for="image" class="form-label">Project Image (optional)</label>
+      <input type="file" id="image" name="image" accept="image/*" class="form-control">
+      <div class="form-text">Image will be saved to <code>static/images</code> and resized for consistent display.</div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn">Upload Project</button>
+    </div>
+  </form>
+</section>
+{% endblock %}

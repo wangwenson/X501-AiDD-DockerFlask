@@ -6,17 +6,32 @@
 
 {% block content %}
 <section class="project-list">
-  <article class="project">
-    <img src="{{ url_for('static', filename='images/project1-placeholder.svg') }}" class="screenshot" alt="Digital Human demo screenshot">
-    <h2 class="h5">Digital Human — Secure AI Demo</h2>
-    <p>Designed and delivered a secure AI demo integrating LLMs with a real-time avatar interface. Built a governance-aware RAG pipeline and engineered a Neo4j-backed document parser to extract insights from unstructured content, reducing manual effort and improving support workflows.</p>
-    <p class="mb-0">Highlights: RAG with access controls • Neo4j parsing • Responsible AI design</p>
-  </article>
-  <article class="project">
-    <img src="{{ url_for('static', filename='images/project2-placeholder.svg') }}" class="screenshot" alt="Sentiment analysis project screenshot">
-    <h2 class="h5">Real-Time Media Sentiment Analysis</h2>
-    <p>Automated a pipeline to collect and store 5,000+ news articles in SQL, prepared datasets with Pandas to reduce noise by 30%, and applied BERT-based models achieving 85%+ classification accuracy for real-time monitoring and decision support.</p>
-    <p class="mb-0">Stack: Python • Pandas/NumPy • SQL • BERT</p>
-  </article>
+  {% if projects and projects|length > 0 %}
+    <div class="list-group">
+      {% for p in projects %}
+      <article class="list-group-item mb-4 p-4 project">
+        <div class="row g-3 align-items-center">
+          <div class="col-md-4 col-sm-12 text-center">
+            {% if p.ImageFileName %}
+              <img src="{{ url_for('static', filename='images/' ~ p.ImageFileName) }}" alt="{{ p.Title }}" class="img-fluid" style="max-height:320px; object-fit:cover; width:100%; border-radius:8px;" />
+            {% else %}
+              <img src="{{ url_for('static', filename='images/project1-placeholder.svg') }}" alt="placeholder" class="img-fluid" style="max-height:320px; object-fit:cover; width:100%; border-radius:8px;" />
+            {% endif %}
+          </div>
+          <div class="col-md-8 col-sm-12">
+            <h3 class="h4">{{ p.Title }}</h3>
+            <p class="mb-0">{{ p.Description }}</p>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No projects found.</p>
+  {% endif %}
+
+  <div class="mt-5 mb-5 text-center">
+    <a href="{{ url_for('project_form') }}" class="btn btn-primary btn-lg px-4 py-3">Add Project</a>
+  </div>
 </section>
 {% endblock %}
