@@ -7,6 +7,8 @@ from pathlib import Path
 import DAL
 import app as myapp
 
+# If Pillow isn't installed in the test environment, skip these tests instead of raising ImportError
+pytest.importorskip('PIL')
 from PIL import Image
 
 
