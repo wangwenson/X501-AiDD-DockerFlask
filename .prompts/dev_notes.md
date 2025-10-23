@@ -1,3 +1,3 @@
-Prompt: Add a data access layer to DAL.py that will interact with the projects database. Projects database will have Title, Description, and Images. Convert the project page to pull project information from the projects database and add a new project_form page that will add new projects. Add a button to the bottom of projects page to route to that.
+Prompt: Create pytest test scripts for my Flask website that has a database-driven projects page
 
-Reflect: Copilot one-shot the prompt and was able to generate the requirements. It only required some additional work towards the formatting of it. Aside from that, Copilot was able to generate the basic functionality instantly without much issue.
+Reply: 
