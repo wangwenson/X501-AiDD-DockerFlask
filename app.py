@@ -108,4 +108,6 @@ def thankyou():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Bind to 0.0.0.0 so the app is reachable from Docker container port mapping
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
